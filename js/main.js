@@ -11,7 +11,7 @@ const renderProduct = (title = 'product', price = 1500, picture = defaultPicture
         <h3 class="product-item__name">${title}</h3>
         <p class="product-item__cost">${price}</p>
         <button class="by-btn button">Добавить в корзину</button>
-     </div>`;
+        </div>`;
 
 const renderProducts = (list) => {
     const productList = list.map((item) => renderProduct(item.title, item.price, item.picture));
