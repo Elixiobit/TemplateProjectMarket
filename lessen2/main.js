@@ -25,8 +25,10 @@ class ProductList {
         this.allProducts = [];
         this._fetchProducts();
         this.render();
+        this.totalCost();
         console.log(this.goods);
         console.log(this.allProducts);
+        console.log(super.sumGoods)
     }
 
     _fetchProducts() {
@@ -40,12 +42,19 @@ class ProductList {
 
     render() {
         const block = document.querySelector(this.container);
-
         for (let product of this.goods) {
             const productObject = new ProductItem(product);
             this.allProducts.push(productObject);
             block.insertAdjacentHTML('beforeend', productObject.render());
         }
+    }
+
+    totalCost () {
+        let sumGoods = 0;
+        this.allProducts.forEach((goods) => sumGoods += goods.price);
+        const block = document.querySelector(this.container);
+        block.setAttribute('data-totalCost', `${sumGoods} \u20bd`);
+        console.log(`Общая сумма товаров равна ${sumGoods} \u20bd`);
     }
 }
 
