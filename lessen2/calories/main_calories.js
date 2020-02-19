@@ -1,27 +1,3 @@
-class SizeHamburger {
-    constructor(size, calories, cost) {
-        this.size = size;
-        this.calories = calories;
-        this.cost = cost;
-    }
-}
-
-class ToppingHamburger {
-    constructor (topping, calories, cost) {
-        // super(size, calories, cost);
-        this.topping = topping;
-        this.calories = calories;
-        this.cost = cost;
-    }
-}
-class DopeHamburger {
-    constructor (dope, calories, cost){
-        this.dope = dope;
-        this.calories = calories;
-        this.cost = cost;
-    }
-
-}
 class Hamburger {
     constructor(size, topping, dope){
         this.allHamburger = [];

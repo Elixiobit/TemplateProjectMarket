@@ -25,7 +25,7 @@ class ProductList {
         this.allProducts = [];
         this._fetchProducts();
         this.render();
-        this.totalCost();
+        this.toTalCost();
         console.log(this.goods);
         console.log(this.allProducts);
     }
@@ -48,7 +48,7 @@ class ProductList {
         }
     }
 
-    totalCost () {
+    toTalCost () {
         let sumGoods = 0;
         this.allProducts.forEach(goods => sumGoods += goods.price);
         const block = document.querySelector(this.container);
