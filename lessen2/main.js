@@ -26,8 +26,8 @@ class ProductList {
         this._fetchProducts();
         this.render();
         this.toTalCost();
-        console.log(this.goods);
-        console.log(this.allProducts);
+        // console.log(this.goods);
+        // console.log(this.allProducts);
     }
 
     _fetchProducts() {
@@ -49,11 +49,12 @@ class ProductList {
     }
 
     toTalCost () {
-        let sumGoods = 0;
-        this.allProducts.forEach(goods => sumGoods += goods.price);
-        const block = document.querySelector(this.container);
-        block.setAttribute('data-totalCost', `${sumGoods} \u20bd`);
-        console.log(`Общая сумма товаров равна ${sumGoods} \u20bd`);
+        return this.allProducts.reduce((accum, item) => accum += item.price, 0);
+        // let sumGoods = 0;
+        // this.allProducts.forEach(goods => sumGoods += goods.price);
+        // const block = document.querySelector(this.container);
+        // block.setAttribute('data-totalCost', `${sumGoods} \u20bd`);
+        // console.log(`Общая сумма товаров равна ${sumGoods} \u20bd`);
     }
 
 }
