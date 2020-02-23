@@ -47,8 +47,8 @@
 // const num = (a, cb) => {
 //     setTimeout(() => {
 //         let b = 20 + a;
-//         const myData = 'test';
-//         cb(b, myData);
+//         // const myData = 'test';
+//         cb(b);
 //     }, 2000);
 // };
 // const callBack = (data, myData) => {
@@ -83,9 +83,9 @@
 //     console.log(error);
 // });
 
-window.addEventListener('load', () => {
-    document.getElementById('ajax-get').addEventListener('click', () => {
-// ES5
+// window.addEventListener('load', () => {
+//     document.getElementById('ajax-get').addEventListener('click', () => {
+// // ES5
 //         var xhr = new XMLHttpRequest();
 //         xhr.open('GET', 'tel.json', true); // true - асинхронный запрос
 //
@@ -112,18 +112,18 @@ window.addEventListener('load', () => {
 //         xhr.send();
 
         // ES6
-        fetch('tel.json')
-            .then(result => result.json())
-            .then((data) => {
-                console.log(data);
-                let block = document.getElementById('ajax-block');
-                block.insertAdjacentHTML('beforeend', `<p>${data.name} - <strong>${data.tel}</strong></p>`);
-            })
-            .catch(error => {
-                console.log(error);
-            });
-    });
-})
+//         fetch('tel.json')
+//             .then(result => result.json())
+//             .then((data) => {
+//                 console.log(data);
+//                 let block = document.getElementById('ajax-block');
+//                 block.insertAdjacentHTML('beforeend', `<p>${data.name} - <strong>${data.tel}</strong></p>`);
+//             })
+//             .catch(error => {
+//                 console.log(error);
+//             });
+//     });
+// })
 </script>
 </body>
 </html>
