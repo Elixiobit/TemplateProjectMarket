@@ -1,20 +1,20 @@
 const API = 'https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses';
 
-// Переделать в ДЗ
-function getRequest(url, cb){
-  let xhr = new XMLHttpRequest();
-  xhr.open('GET', url, true);
-  xhr.onreadystatechange = () => {
-    if (xhr.readyState === 4) {
-      if (xhr.status !== 200) {
-        console.log('Error');
-      } else {
-        cb(xhr.responseText);
-      }
-    }
-  };
-  xhr.send();
-}
+// Переделать в ДЗ --> СДЕЛАНО
+// function getRequest(url, cb){
+//   let xhr = new XMLHttpRequest();
+//   xhr.open('GET', url, true);
+//   xhr.onreadystatechange = () => {
+//     if (xhr.readyState === 4) {
+//       if (xhr.status !== 200) {
+//         console.log('Error');
+//       } else {
+//         cb(xhr.responseText);
+//       }
+//     }
+//   };
+//   xhr.send();
+// }
 
 
 class ProductList {
@@ -22,29 +22,29 @@ class ProductList {
     this.container = container;
     this.goods = [];
     this.allProducts = [];
-    this._fetchProducts();
-    // this._getProducts()
-    //     .then(data => {
-    //       this.goods = [...data];
-    //       this.render();
-    //     });
+    // this._fetchProducts();
+    this._getProducts()
+        .then(data => {
+          this.goods = [...data];
+          this.render();
+        });
   }
 
-  _fetchProducts() {
-    getRequest(`${API}/catalogData.json`, (data) => {
-      this.goods = JSON.parse(data);
-      this.render();
-      console.log(this.goods);
-    });
-  }
-
-  // _getProducts() {
-  //   return fetch(`${API}/catalogData.json`)
-  //       .then(result => result.json())
-  //       .catch(error => {
-  //         console.log('Error:', error);
-  //       });
+  // _fetchProducts() {
+  //   getRequest(`${API}/catalogData.json`, (data) => {
+  //     this.goods = JSON.parse(data);
+  //     this.render();
+  //     console.log(this.goods);
+  //   });
   // }
+
+  _getProducts() {
+    return fetch(`${API}/catalogData.json`)
+        .then(result => result.json())
+        .catch(error => {
+          console.log('Error:', error);
+        });
+  }
 
   calcSum(){
     return this.allProducts.reduce((accum, item) => accum += item.price, 0);
@@ -64,12 +64,12 @@ class ProductItem{
   constructor(product, img='https://placehold.it/200x150') {
     this.product_name = product.product_name;
     this.price = product.price;
-    this.id = product.id;
+    this.id_product = product.id_product;
     this.img = img;
   }
 
   render() {
-    return `<div class="product-item" data-id="${this.id}">
+    return `<div class="product-item" data-id="${this.id_product}">
                 <img src="${this.img}" alt="Some img">
                 <div class="desc">
                     <h3>${this.product_name}</h3>
