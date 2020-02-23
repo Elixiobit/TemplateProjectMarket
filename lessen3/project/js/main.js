@@ -1,7 +1,7 @@
 const API = 'https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses';
 
 // Переделать в ДЗ
-let getRequest = (url, cb) => {
+function getRequest(url, cb){
   let xhr = new XMLHttpRequest();
   xhr.open('GET', url, true);
   xhr.onreadystatechange = () => {
@@ -14,36 +14,37 @@ let getRequest = (url, cb) => {
     }
   };
   xhr.send();
-};
+}
+
 
 class ProductList {
   constructor(container = '.products') {
     this.container = container;
     this.goods = [];
     this.allProducts = [];
-    // this._fetchProducts();
-    this._getProducts()
-        .then(data => {
-          this.goods = [...data];
-          this.render();
-        });
+    this._fetchProducts();
+    // this._getProducts()
+    //     .then(data => {
+    //       this.goods = [...data];
+    //       this.render();
+    //     });
   }
 
-  // _fetchProducts() {
-  //   getRequest(`${API}/catalogData.json`, (data) => {
-  //     this.goods = JSON.parse(data);
-  //     this.render();
-  //     console.log(this.goods);
-  //   });
+  _fetchProducts() {
+    getRequest(`${API}/catalogData.json`, (data) => {
+      this.goods = JSON.parse(data);
+      this.render();
+      console.log(this.goods);
+    });
+  }
+
+  // _getProducts() {
+  //   return fetch(`${API}/catalogData.json`)
+  //       .then(result => result.json())
+  //       .catch(error => {
+  //         console.log('Error:', error);
+  //       });
   // }
-
-  _getProducts() {
-    return fetch(`${API}/catalogData.json`)
-        .then(result => result.json())
-        .catch(error => {
-          console.log('Error:', error);
-        });
-  }
 
   calcSum(){
     return this.allProducts.reduce((accum, item) => accum += item.price, 0);
@@ -77,6 +78,11 @@ class ProductItem{
                 </div>
             </div>`;
   }
+}
+
+class AddToBasket {
+
+
 }
 
 const list = new ProductList();
