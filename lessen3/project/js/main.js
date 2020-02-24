@@ -46,6 +46,7 @@ class ProductList {
         });
   }
 
+
   calcSum(){
     return this.allProducts.reduce((accum, item) => accum += item.price, 0);
   }
@@ -80,12 +81,39 @@ class ProductItem{
   }
 }
 
-class AddToBasket {
+class BasketItem{
+  constructor(){
+      this.basket = [];
+      this._addToBasket()
+          .then (data => {
+              // this.basket = [...data];
+              console.log(this.data);
+          });
 
+  }
+  _addToBasket (){
+      return fetch(`${API}/addToBasket.json`)
+          .then(result => result.json())
+          // .then((data) => {
+          //     console.log(data);
+          //     let block = document.querySelector(this.container);
+          //     block.insertAdjacentHTML('beforeend', `<p> - <strong>Hello</strong></p>`);
+          // })
+          .catch(error => {
+              console.log(error);
+          });
+
+
+
+      // window.addEventListener('load', () => {
+    //   document.querySelector(this.container).addEventListener('click', () => {
+    //   });
+    // })
+  }
 
 }
 
-const list = new ProductList();
+const list = new BasketItem();
 
 // const products = [
 //   {id: 1, title: 'Notebook', price: 1000},

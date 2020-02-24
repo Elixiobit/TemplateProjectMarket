@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson 2</title>
+</head>
+<body>
+<!--insertAdjacentHTML-->
+<!--beforebegin-->
+<p>
+<!--afterbegin-->
+    <span></span>
+<!--beforeend-->
+</p>
+<!--afterend-->
+<script>
+// ES5
+// var user = {
+//     name: 'Ann',
+// };
+
+// function Person(name, yearOfBirth) {
+//     this.userName = name;
+//     this.yearOfBirth = yearOfBirth;
+// }
+//
+// Person.prototype.calcAge = function () {
+//     return new Date().getFullYear() - this.yearOfBirth;
+// };
+//
+// function Teacher(name, yearOfBirth, subject) {
+//     Person.call(this, name, yearOfBirth);
+//     this.subject = subject;
+// }
+//
+// Teacher.prototype = Object.create(Person.prototype);
+// Teacher.prototype.constructor = Teacher;
+//
+// var john = new Person('John', 1990);
+// var ann = new Teacher('Ann', 1998, 'Math');
+//
+// console.log(ann);
+
+// ES6
+class Person {
+    constructor(name, yearOfBirth) {
+        this.name = name;
+        this.yearOfBirth = yearOfBirth;
+    }
+
+    calcAge() {
+        return new Date().getFullYear() - this.yearOfBirth;
+    }
+
+    sayHi() {
+        return `${this.name} says hi`;
+    }
+}
+
+class Teacher extends Person {
+    constructor(name, yearOfBirth, subject) {
+        super(name, yearOfBirth);
+        this.subject = subject;
+    }
+
+    sayHi() {
+        return `${super.sayHi()} as teacher`;
+    }
+
+    static triple(x) {
+        if (x === undefined) {
+            x = 2;
+        }
+
+        return x * 3;
+    }
+}
+class Calculator {
+    static sum(a, b) {
+        return a + b;
+    }
+    static dif(a, b) {
+        return a - b;
+    }
+}
+
+class IngCalc extends Calculator {
+
+}
+
+console.log(Calculator.sum(3, 5));
+console.log(Calculator.dif(5, 3));
+
+// console.log(Teacher.triple(5));
+const john = new Person('John', 1990);
+const ann = new Teacher('Ann', 1998, 'Math');
+</script>
+</body>
+</html>
