@@ -1,4 +1,4 @@
-Vue.component('products', {
+ Vue.component('products', {
     data(){
         return {
             catalogUrl: '/catalogData.json',
@@ -11,6 +11,7 @@ Vue.component('products', {
         filter(){
             let regexp = new RegExp(this.userSearch, 'i');
             this.filtered = this.products.filter(el => regexp.test(el.product_name));
+            console.log(this.filtered);
         }
     },
     mounted(){

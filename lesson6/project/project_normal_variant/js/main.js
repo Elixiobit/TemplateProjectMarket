@@ -16,6 +16,7 @@ const app = new Vue({
     },
     mounted() {
         console.log(this);
+        console.log(this.userSearch);
     }
 });
 
