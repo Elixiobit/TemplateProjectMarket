@@ -1,5 +1,6 @@
 # Default ignored files
 .idea/
+node_modules/
 *.sass
 *.css.map
 API Description.xlsx
