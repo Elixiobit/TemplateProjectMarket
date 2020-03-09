@@ -13,3 +13,4 @@ Vue.component('filter-search', {
             </button>
         </form>`,
 });
+
